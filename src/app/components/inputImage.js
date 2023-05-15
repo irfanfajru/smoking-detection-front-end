@@ -39,6 +39,12 @@ export default function InputImage({ setOutputImage, setProcessing }) {
       .catch((error) => console.log(error));
   };
 
+  // example image on click
+  const exampleImage = () => {
+    setImage("/example-image.png");
+    setOutputImage("/example-output.png");
+  };
+
   return (
     <div className="border rounded shadow-sm p-4">
       <div className="text-start">
@@ -71,6 +77,7 @@ export default function InputImage({ setOutputImage, setProcessing }) {
         <div className="col-4">
           <button className="btn p-0">
             <Image
+              onClick={exampleImage}
               src="/example-image.png"
               className="rounded"
               style={{ objectFit: "cover" }}
