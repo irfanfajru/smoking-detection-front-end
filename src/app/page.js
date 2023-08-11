@@ -5,6 +5,7 @@ import OutputImage from "./components/outputImage";
 import { useState } from "react";
 export default function Home() {
   const [outputImage, setOutputImage] = useState(null);
+  const [detailDetection, setDetailDetection] = useState(null);
   const [processing, setProcessing] = useState(false);
   return (
     <div className="container">
@@ -12,11 +13,16 @@ export default function Home() {
         <div className="col">
           <InputImage
             setOutputImage={setOutputImage}
+            setDetailDetection={setDetailDetection}
             setProcessing={setProcessing}
           />
         </div>
         <div className="col">
-          <OutputImage outputImage={outputImage} processing={processing} />
+          <OutputImage
+            outputImage={outputImage}
+            processing={processing}
+            detailDetection={detailDetection}
+          />
         </div>
       </div>
     </div>

@@ -2,7 +2,11 @@
 import Image from "next/image";
 import axios from "axios";
 import { useRef, useState, useEffect } from "react";
-export default function InputImage({ setOutputImage, setProcessing }) {
+export default function InputImage({
+  setOutputImage,
+  setDetailDetection,
+  setProcessing,
+}) {
   const inputFile = useRef(null);
   const [image, setImage] = useState(null);
 
@@ -10,6 +14,7 @@ export default function InputImage({ setOutputImage, setProcessing }) {
   const clearInput = () => {
     setImage(null);
     setOutputImage(null);
+    setDetailDetection(null);
     inputFile.current.value = null;
   };
 
@@ -23,6 +28,7 @@ export default function InputImage({ setOutputImage, setProcessing }) {
   const upload = () => {
     const data = new FormData();
     data.append("image", inputFile.current.files[0]);
+    setOutputImage(null);
     setProcessing(true);
     console.log("Sending");
     axios
@@ -34,9 +40,15 @@ export default function InputImage({ setOutputImage, setProcessing }) {
       .then((response) => {
         console.log("data = ", response.data);
         setOutputImage(response.data.data.resultUrl);
+        setDetailDetection(response.data.data.detailDetection);
         setProcessing(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        alert(error);
+        setProcessing(false);
+        setDetailDetection(null);
+        setOutputImage(null);
+      });
   };
 
   // example image on click
