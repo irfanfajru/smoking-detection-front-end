@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div className="text-center">
-          <h1>Deteksi Pengendara Merokok</h1>
+          <h1>Deteksi Merokok Saat Berkendara</h1>
           <h2>YOLOv7</h2>
         </div>
         <div>{children}</div>

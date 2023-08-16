@@ -54,7 +54,31 @@ export default function InputImage({
   // example image on click
   const exampleImage = () => {
     setImage("/example-image.png");
-    setOutputImage("/example-output.png");
+    setOutputImage(null);
+    setProcessing(true);
+    console.log("Sending");
+    axios
+      .post(
+        "http://127.0.0.1:5000/example",
+        { file_url: "http://127.0.0.1:3000/example-image.png" },
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log("data = ", response.data);
+        setOutputImage(response.data.data.resultUrl);
+        setDetailDetection(response.data.data.detailDetection);
+        setProcessing(false);
+      })
+      .catch((error) => {
+        alert(error);
+        setProcessing(false);
+        setDetailDetection(null);
+        setOutputImage(null);
+      });
   };
 
   return (
