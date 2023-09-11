@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 export const metadata = {
-  title: "Deteksi Pengendara Merokok Yolov7",
+  title: "Deteksi Merokok Saat Berkendara Yolov7",
   description:
-    "Sistem deteksi pengendara merokok menggunakan YOLOv7 berbasis website",
+    "Sistem deteksi Merokok Saat Berkendara menggunakan YOLOv7 berbasis website",
 };
 
 export default function RootLayout({ children }) {

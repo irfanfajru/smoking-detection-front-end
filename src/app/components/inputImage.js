@@ -29,6 +29,7 @@ export default function InputImage({
     const data = new FormData();
     data.append("image", inputFile.current.files[0]);
     setOutputImage(null);
+    setDetailDetection(null);
     setProcessing(true);
     console.log("Sending");
     axios
@@ -118,7 +119,7 @@ export default function InputImage({
               className="rounded"
               style={{ objectFit: "cover" }}
               width="100"
-              height="50"
+              height="100"
               alt="example image"
             />
           </button>

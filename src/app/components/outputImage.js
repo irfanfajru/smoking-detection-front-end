@@ -26,12 +26,10 @@ export default function OutputImage({
               <p>Total Deteksi : {detailDetection.length}</p>
               <hr></hr>
               <div className="row row-cols-3 gap-2">
-                {detailDetection.map((val, index) => (
+                {detailDetection.map((val) => (
                   <>
                     <div className="col rounded border shadom-sm p-2">
-                      <p>
-                        {index + 1}. {val["label"]}
-                      </p>
+                      <p>{val["label"]}</p>
                       {/* detail cigar */}
                       <ul>
                         {val["detail"].map((detVal) => (
